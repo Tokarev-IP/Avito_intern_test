@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "avito_intern_test"
