@@ -1,21 +1,23 @@
 package test.app.avito_intern_test
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+
 class RecyclerViewAdapter() : RecyclerView.Adapter<MyViewHolder>() {
 
+
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //  val current= words[position]
-        holder.mtitle.text = "1"
+        holder.mtitle.text = dataClass.numberList[position].toString()
     }
 
     override fun getItemCount(): Int {
-        return 10
-        //words.size
+        return dataClass.numberList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,7 +27,6 @@ class RecyclerViewAdapter() : RecyclerView.Adapter<MyViewHolder>() {
         return MyViewHolder(mInfalter)
 
     }
-
 }
 
 class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

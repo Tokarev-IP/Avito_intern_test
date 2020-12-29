@@ -4,16 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="15dp"
+    android:layout_marginTop="15dp"
+    android:background="@color/white"
     >
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/text_number" />
+        android:layout_height="40dp"
+        android:id="@+id/text_number"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="70dp"
+        android:paddingTop="10dp"
+        android:background="@color/white"
+
+        />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/delete_number" />
+        android:layout_height="40dp"
+        android:id="@+id/delete_number"
+        android:text="@string/delete"
+        android:background="@color/backGROUND"
+        />
 
 </LinearLayout>
