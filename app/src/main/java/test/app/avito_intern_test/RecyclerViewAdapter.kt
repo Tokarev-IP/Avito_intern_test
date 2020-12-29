@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerViewAdapter(private val numberList: MutableList<Int>) : RecyclerView.Adapter<MyViewHolder>() {
 
+
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.mtitle.text = numberList[position].toString()
     }
