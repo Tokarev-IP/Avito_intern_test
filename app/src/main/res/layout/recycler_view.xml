@@ -4,29 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="15dp"
-    android:layout_marginTop="15dp"
-    android:background="@color/white"
+    android:background="@color/teal_700"
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+    android:paddingBottom="5dp"
+    android:paddingRight="5dp"
     >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/text_number"
-        android:layout_marginBottom="5dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="70dp"
         android:paddingTop="10dp"
         android:background="@color/white"
-
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/delete_number"
+        android:id="@+id/delete_button"
         android:text="@string/delete"
         android:background="@color/backGROUND"
         />
