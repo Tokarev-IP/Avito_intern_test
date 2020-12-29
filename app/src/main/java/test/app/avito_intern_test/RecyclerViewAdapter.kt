@@ -7,17 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-
-class RecyclerViewAdapter() : RecyclerView.Adapter<MyViewHolder>() {
-
-
+class RecyclerViewAdapter(private val numberList: MutableList<Int>) : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.mtitle.text = dataClass.numberList[position].toString()
+        holder.mtitle.text = numberList[position].toString()
     }
 
     override fun getItemCount(): Int {
-        return dataClass.numberList.size
+        return numberList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -26,7 +23,13 @@ class RecyclerViewAdapter() : RecyclerView.Adapter<MyViewHolder>() {
                 .inflate(R.layout.recycler_view, parent, false)
         return MyViewHolder(mInfalter)
 
+
     }
+
+    fun update(){
+        notifyDataSetChanged()
+    }
+
 }
 
 class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

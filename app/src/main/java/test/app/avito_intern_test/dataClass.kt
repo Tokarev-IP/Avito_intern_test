@@ -1,23 +1,24 @@
 package test.app.avito_intern_test
 
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlin.random.Random
 
 
-class dataClass {
+class DataSource {
 
     companion object {
 
         val numberList: MutableList<Int> = mutableListOf()
 
-        fun delete() {
+        fun addNumber() {
            dataSource()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    numberList.add(it, numberList.size + 1)
+                    numberList.add(it)
                 }, {
 
                 }, {
@@ -26,11 +27,11 @@ class dataClass {
         }
 
         private fun dataSource(): Observable<Int> {
-            return Observable.create { it ->
+            return Observable.create {
                 while (true) {
-                    Thread.sleep(1000)
-                    val i = Random.nextInt(numberList.size)
-                    it.onNext(i)
+                    Thread.sleep(5000)
+                    val i = numberList.size+1
+//                  it.onNext(i)
                 }
             }
         }

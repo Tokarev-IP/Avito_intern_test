@@ -10,11 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DataSource.addNumberList()
+
         val recyclerView: RecyclerView = findViewById(R.id.recycler_v)
         recyclerView.layoutManager = GridLayoutManager(this,2)
-        recyclerView.adapter = RecyclerViewAdapter()
+        //recyclerView.adapter = RecyclerViewAdapter()
+        val mAdapter = RecyclerViewAdapter(DataSource.numberList)
+        recyclerView.adapter = mAdapter
+        DataSource.addNumber()
 
-        dataClass.addNumberList()
-       // dataClass.delete()
     }
 }
