@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         DataSource.addNumberList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_v)
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             }, {
             }, {
             })
-        
 
     }
 
@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
             while (true) {
                 Thread.sleep(5000)
                 val i = Random.nextInt(DataSource.numberList.size+1)
-                DataSource.dataAdd(i,DataSource.numberList.size)
+                DataSource.dataAdd(i,DataSource.count+1)
+                DataSource.count++;
                 it.onNext(i)
             }
         }

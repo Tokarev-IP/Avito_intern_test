@@ -10,6 +10,11 @@ class DataSource {
     companion object {
 
         var numberList: MutableList<Int> = mutableListOf()
+        var count:Int=15
+
+        fun countRe(mCount:Int){
+            count=mCount
+        }
 
         fun addNumberList() {
             for (i in 1..15) {
@@ -27,8 +32,7 @@ class DataSource {
 
 
         fun dataDelete(position: Int) {
-            numberList.remove(position + 1)
-
+            numberList.removeAt(position)
         }
 
     }
