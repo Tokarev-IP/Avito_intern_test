@@ -10,10 +10,14 @@ class DataSource {
     companion object {
 
         var numberList: MutableList<Int> = mutableListOf()
-        var count:Int=15
+        var count:Int = 0
 
-        fun countRe(mCount:Int){
-            count=mCount
+        fun count(mcount:Int){
+            count = mcount
+        }
+
+        fun firstCount(){
+            count=15
         }
 
         fun addNumberList() {

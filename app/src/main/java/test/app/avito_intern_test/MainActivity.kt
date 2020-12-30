@@ -13,17 +13,25 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    private val CONSTK = "const_k"
+    private val CONSTLIST = "const_list"
+    private val CONST = 1
+    private var TIME = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (savedInstanceState?.getInt(CONSTK)!=null) DataSource.count(savedInstanceState.getInt(CONSTK))
+        else DataSource.firstCount()
 
-        DataSource.addNumberList()
+        if (savedInstanceState?.getInt(CONSTLIST)==null) DataSource.addNumberList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_v)
         recyclerView.layoutManager = GridLayoutManager(this,2)
         val mAdapter = RecyclerViewAdapter(DataSource.numberList)
         recyclerView.adapter = mAdapter
+
 
         dataSource()
             .subscribeOn(Schedulers.newThread())
@@ -32,23 +40,36 @@ class MainActivity : AppCompatActivity() {
                 mAdapter.notifyDataSetChanged()
             }, {
             }, {
-            })
 
+            })
     }
 
     private fun dataSource(): Observable<Int> {
         return Observable.create {
-            while (true) {
+            while (TIME==1) {
                 Thread.sleep(5000)
-                val i = Random.nextInt(DataSource.numberList.size+1)
-                DataSource.dataAdd(i,DataSource.count+1)
-                DataSource.count++;
-                it.onNext(i)
+                if (TIME == 1) {
+                    val i = Random.nextInt(DataSource.numberList.size + 1)
+                    DataSource.dataAdd(i, DataSource.count + 1)
+                    DataSource.count++;
+                    it.onNext(i)
+                }
             }
         }
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.run {
+            putInt(CONSTK,DataSource.count)
+        }
+        outState.run {
+            putInt(CONSTLIST,CONST)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroy() {
+        TIME=0
+        super.onDestroy()
     }
 }
