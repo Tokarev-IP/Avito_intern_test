@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState?.getInt(CONSTLIST)==null) DataSource.addNumberList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_v)
-        recyclerView.layoutManager = GridLayoutManager(this,2)
+        recyclerView.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.col_count))
         val mAdapter = RecyclerViewAdapter(DataSource.numberList)
         recyclerView.adapter = mAdapter
 

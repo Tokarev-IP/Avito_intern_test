@@ -26,10 +26,6 @@ class DataSource {
             }
         }
 
-        fun setData(numbList: MutableList<Int>) {
-            numberList = numbList
-        }
-
         fun dataAdd(position: Int, number: Int) {
             numberList.add(position, number)
         }
