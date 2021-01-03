@@ -16,9 +16,7 @@ class RecyclerViewAdapter(private val numberList: MutableList<Int>) : RecyclerVi
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.mtitle.text = numberList[position].toString()
         holder.mbutton.setOnClickListener {
-            Log.d(TAG, "нажали DELETE $position и это номер из листа ${DataSource.numberList[position]}");
-            DataSource.dataDelete(position)
-            notifyDataSetChanged()
+            deleteButtonAction(position)
         }
     }
 
@@ -32,6 +30,16 @@ class RecyclerViewAdapter(private val numberList: MutableList<Int>) : RecyclerVi
                 .inflate(R.layout.recycler_view, parent, false)
         return MyViewHolder(mInfalter)
 
+
+    }
+
+    fun deleteButtonAction(position:Int){
+        Log.d(TAG, "нажали DELETE $position и это номер из листа ${DataSource.numberList[position]}")
+        DeleteSource.dataAdd(DataSource.numberList[position])
+        Log.d(TAG, "добавил в удаленное число ${DataSource.numberList[position]}")
+        DataSource.dataDelete(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, itemCount-position)
 
     }
 

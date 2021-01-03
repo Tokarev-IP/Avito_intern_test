@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                mAdapter.notifyDataSetChanged()
+                mAdapter.notifyItemInserted(it)
+                mAdapter.notifyItemRangeChanged(it, mAdapter.itemCount-it)
             }, {
             }, {
 
@@ -49,10 +50,19 @@ class MainActivity : AppCompatActivity() {
             while (TIME==1) {
                 Thread.sleep(5000)
                 if (TIME == 1) {
-                    val i = Random.nextInt(DataSource.numberList.size + 1)
-                    DataSource.dataAdd(i, DataSource.count + 1)
-                    DataSource.count++;
-                    it.onNext(i)
+                    if (DeleteSource.deleteNumberList.size == 0) {
+                        val i = Random.nextInt(DataSource.numberList.size)
+                        DataSource.dataAdd(i, ++DataSource.count)
+                        it.onNext(i)
+                    }
+
+                    if (DeleteSource.deleteNumberList.size > 0) {
+                        val i = Random.nextInt(DeleteSource.deleteNumberList.size)
+                        val j = Random.nextInt(DataSource.numberList.size+1)
+                        DataSource.dataAdd(j, DeleteSource.deleteNumberList[i])
+                        DeleteSource.dataDelete(i)
+                        it.onNext(j)
+                    }
                 }
             }
         }

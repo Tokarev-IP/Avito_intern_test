@@ -31,9 +31,8 @@ class DataSource {
         }
 
         fun dataAdd(position: Int, number: Int) {
-            numberList.add(position, number + 1)
+            numberList.add(position, number)
         }
-
 
         fun dataDelete(position: Int) {
             numberList.removeAt(position)
