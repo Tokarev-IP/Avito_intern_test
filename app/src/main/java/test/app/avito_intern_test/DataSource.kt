@@ -1,10 +1,5 @@
 package test.app.avito_intern_test
 
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.core.Completable
-import kotlin.random.Random
-
 class DataSource {
 
     companion object {

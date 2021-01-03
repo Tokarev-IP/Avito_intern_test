@@ -2,12 +2,10 @@ package test.app.avito_intern_test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlin.random.Random
 
@@ -31,8 +29,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.col_count))
         val mAdapter = RecyclerViewAdapter(DataSource.numberList)
         recyclerView.adapter = mAdapter
-
-
+        
         dataSource()
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
@@ -49,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         return Observable.create {
             while (TIME==1) {
                 Thread.sleep(5000)
+
                 if (TIME == 1) {
                     if (DeleteSource.deleteNumberList.size == 0) {
                         val i = Random.nextInt(DataSource.numberList.size)
