@@ -18,7 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="70dp"
         android:paddingTop="10dp"
-        android:background="@color/white"
+        android:background="@color/blue_white"
         />
 
     <Button
