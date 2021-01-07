@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = mAdapter
         
         dataSource()
-            .subscribeOn(Schedulers.newThread())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 mAdapter.notifyItemInserted(it)
